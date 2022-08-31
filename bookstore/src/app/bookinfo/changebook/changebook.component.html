@@ -1,0 +1,93 @@
+<mat-dialog-content class="mat-typography">
+    <form (ngSubmit)="changeBook(bookForm)" #bookForm="ngForm">
+            <table>
+                <tr>
+                    <td>
+                        Unesi naslov:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450>
+                            <mat-label><i>Promeni naslov. Trenutno: {{data.name}}</i></mat-label>
+                            <input matInput name="name" #name="ngModel" ngModel value="{{data.name}}">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Unesi autora:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450>
+                            <mat-label><i>Promeni autora. Trenutno: {{data.author}}</i></mat-label>
+                            <input matInput name="author" #author="ngModel" ngModel value="{{author}}">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Unesi cenu:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450>
+                            <mat-label><i>Promeni cenu. Trenutno: {{data.price}}</i></mat-label>
+                            <input matInput name="price" #price="ngModel" ngModel value="{{price}}">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Unesi opis:
+                    </td>
+                    <td>
+                        <mat-form-field [style.fontSize]=17 appearance="fill" [style.width.px]=450>
+                            <mat-label><i>Promeni opis oglasa</i></mat-label>
+                            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" name="description" ngModel
+                                #description="ngModel" value="{{data.description}}"></textarea>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Unesi URL slike:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450>
+                            <mat-label><i>URL</i></mat-label>
+                            <input matInput name="imageURL" ngModel #imageURL="ngModel" value="{{data.imageURL}}">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Izaberi žanr:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450>
+                            <mat-label><i>Izaberi žanr</i></mat-label>
+                            <mat-select name="genre" ngModel #genre="ngModel">
+                                <mat-option *ngFor="let genre of genres$" [value]="genre">
+                                    {{genre}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Izmeni kontakt email:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450>
+                            <mat-label><i>Email</i></mat-label>
+                            <input matInput name="email" ngModel #email="ngModel" value="{{data.contact}}">
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            <button mat-button color="accent" type="submit">Izmeni</button> 
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Otkaži</button>
+</mat-dialog-actions>

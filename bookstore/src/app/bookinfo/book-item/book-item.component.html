@@ -1,0 +1,12 @@
+<div class="movie-item">
+    <mat-card style="height: 550px; width: 300px; text-align: center;">
+        <mat-card-title>{{book.name}}</mat-card-title>
+        <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+        <p style="text-align: center;"><img [src]="book.imageURL" style="width: 200px;"></p>
+        <!-- <mat-card-content>{{book.description}}</mat-card-content> -->
+        <mat-card-title style="color: palevioletred;">{{book.price}} RSD</mat-card-title>
+        <mat-card-subtitle>Postavio: <a href='mailto:{{book.contact}}'>@{{book.user}}</a></mat-card-subtitle>
+        <button mat-button (click)="openDetailsDialog()">Detalji</button>
+        <button mat-button (click)="openChangeDialog()" *ngIf="book.user == user">Izmeni</button>
+    </mat-card>
+</div>

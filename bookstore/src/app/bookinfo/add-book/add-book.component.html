@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .add-forma {
+            margin: auto;
+            margin-top: 30px;
+            width: 600px;
+            border: 3px solid rgb(214, 220, 43);
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <form (ngSubmit)="addBook(bookForm)" #bookForm="ngForm">
+        <mat-card class="add-forma">
+            <table>
+                <tr>
+                    <td>
+                        Unesi naslov:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450 id="name">
+                            <mat-label><i>Npr. Na Drini ćuprija</i></mat-label>
+                            <input matInput required name="name" #name="ngModel" ngModel >
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Unesi autora:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450>
+                            <mat-label><i>Npr. Ivo Andrić</i></mat-label>
+                            <input matInput required name="author" #author="ngModel" ngModel>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Unesi cenu:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450>
+                            <mat-label><i>RSD</i></mat-label>
+                            <input matInput required name="price" #price="ngModel" ngModel>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Unesi opis:
+                    </td>
+                    <td>
+                        <mat-form-field [style.fontSize]=17 appearance="fill" [style.width.px]=450>
+                            <mat-label><i>Informacije o proizvodu, godina izdanja, stanje, sažetak</i></mat-label>
+                            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" required name="description" ngModel
+                                #description="ngModel"></textarea>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Unesi URL slike:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450>
+                            <mat-label><i>URL(https://...)</i></mat-label>
+                            <input matInput required name="imageURL" ngModel #imageURL="ngModel" pattern="https://.*">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Izaberi žanr:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450>
+                            <mat-select required name="genre" ngModel #genre="ngModel">
+                                <mat-option *ngFor="let genre of genres$" [value]="genre">
+                                    {{genre}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Unesi kontakt email:
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" [style.width.px]=450>
+                            <mat-label><i>Email za kontakt</i></mat-label>
+                            <input matInput required name="contact" ngModel #contact="ngModel">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <button mat-button color="accent" type="submit">Dodaj</button>
+            </table>
+        </mat-card>
+    </form>
+</body>
+
+</html>

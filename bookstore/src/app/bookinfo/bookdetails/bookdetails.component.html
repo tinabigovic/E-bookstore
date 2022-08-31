@@ -1,0 +1,14 @@
+<mat-dialog-content class="mat-typography">
+    <h2 style="margin-bottom: 0px;">{{data.author}}: <i>{{data.name}}</i></h2>
+    <p style="color: grey; margin-top: 0px; margin-bottom: 0px;">{{data.genre}}</p>
+    <hr style="margin-top: 0px;">
+    <!-- <h3>Opis:</h3> -->
+    <p>{{data.description}}</p>
+    <hr>
+    <!-- <h3>Knjigu postavio:</h3> -->
+    <p>@{{data.user}}</p>
+    <a href='mailto:{{data.contact}}'>Kontaktiraj prodavca putem mail-a.</a>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Zatvori</button>
+</mat-dialog-actions>

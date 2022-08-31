@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .book-list {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            column-gap: 50px;
+            row-gap: 50px;
+        }
+
+        .filter {
+            margin-top: 80px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form (ngSubmit)="booksByGenre(bookForm)" #bookForm="ngForm" class="filter">
+            <mat-form-field color="accent" [style.width.px]=200 [style.height.px]=20>
+                <mat-select name="genre" ngModel #genre="ngModel" color="accent" placeholder="Pretraga po žanru:">
+                    <mat-option *ngFor="let genre of genres$" [value]="genre" color="accent">
+                        {{genre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-button value="submit" color="accent">Prikaži</button>
+            <button mat-button (click)="reload()" color="accent">Sve knjige</button>
+        </form>
+        <hr>
+    </div>
+    <div class="book-list" *ngIf="booksGenre == null">
+        <app-book-item [book]="book" *ngFor="let book of books$ | async"></app-book-item>
+    </div>
+    <div class="book-list">
+        <app-book-item [book]="book" *ngFor="let book of booksGenre | async"></app-book-item>
+    </div>
+</body>
+
+</html>

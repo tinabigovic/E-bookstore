@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .navigation {
+      background-color: linear-gradient(to bottom right, #c06426 0%, #d344b0 25%, #cb417f 50%, #c98820 75%, #ce713b 100%);;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1
+    }
+
+    .content {
+      margin-top: 60px;
+    }
+
+    .add-forma {
+      margin: auto;
+      margin-top: 30px;
+      width: 600px;
+      border: 3px solid rgb(214, 220, 43);
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <mat-toolbar class="navigation">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <span>
+      <img src="https://i.postimg.cc/L57jj8Nw/logo2.jpg" width="200px" style="overflow: hidden;">
+    </span>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/register" routerLinkActive="active" *ngIf="user == ''">
+        <mat-icon>person_add</mat-icon>
+        <span>Registruj se</span>
+      </button>
+      <button mat-menu-item routerLink="/login" routerLinkActive="active" *ngIf="user == ''">
+        <mat-icon>person_outline</mat-icon>
+        <span>Prijavi se</span>
+      </button>
+      <button mat-menu-item routerLink="/bookinfo/list" routerLinkActive="active" *ngIf="user != ''">
+        <mat-icon>library_books</mat-icon>
+        <span>Sve knjige</span>
+      </button>
+      <button mat-menu-item routerLink="/bookinfo/mylist" routerLinkActive="active" *ngIf="user != ''">
+        <mat-icon>collections_bookmark</mat-icon>
+        <span>Moje knjige</span>
+      </button>
+      <button mat-menu-item routerLink="/bookinfo/add" routerLinkActive="active" *ngIf="user != ''">
+        <mat-icon>library_add</mat-icon>
+        <span>Dodaj knjigu</span>
+      </button>
+      <button mat-menu-item (click)="onLogout()" *ngIf="user != ''">
+        <mat-icon>person_outline</mat-icon>
+        <span>Odjavi se</span>
+      </button>
+    </mat-menu>
+    <span *ngIf="user != ''" style="margin-left: 67%; color: rgb(226, 43, 144);">Dobrodošli, @{{user}}</span>
+  </mat-toolbar>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</body>
+
+</html>

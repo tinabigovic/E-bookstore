@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .form-group {
+            margin: auto;
+            margin-top: 50px;
+            width: 500px;
+            border: 8px solid transparent;
+            border-image: linear-gradient(to bottom right, #c06426 0%, #d344b0 25%, #cb417f 50%, #c98820 75%, #ce713b 100%);
+            border-image-slice: 1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            display: inline;
+            float: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <div class="form-group">
+        <form (ngSubmit)="login()">
+            <h1>Prijavi se</h1>
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill" [style.fontSize.px]=17
+                    [style.width.px]=350>
+                    <mat-label>Username</mat-label>
+                    <input type="text" matInput placeholder="enter your username" required name="username"
+                        [(ngModel)]="username">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill" [style.fontSize.px]=17 [style.width.px]=350>
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" required name="password" [(ngModel)]="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <button mat-stroked-button color="accent" type="submit" [style.fontSize.px]=17>Login</button>
+        </form>
+    </div>
+</body>
+
+</html>
